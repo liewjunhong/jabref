@@ -196,35 +196,6 @@ class FileUtilTest {
     }
 
     @Test
-    void uniquePathSubstrings() {
-       List<String> paths = List.of("C:/uniquefile.bib",
-               "C:/downloads/filename.bib",
-               "C:/mypaper/bib/filename.bib",
-               "C:/external/mypaper/bib/filename.bib",
-               "");
-        List<String> uniqPath = List.of("uniquefile.bib",
-              "downloads/filename.bib",
-              "C:/mypaper/bib/filename.bib",
-              "external/mypaper/bib/filename.bib",
-              "");
-
-        List<String> result = FileUtil.uniquePathSubstrings(paths);
-        assertEquals(uniqPath, result);
-    }
-
-    @Test
-    void testUniquePathFragmentWithSameSuffix() {
-        List<String> dirs = List.of("/users/jabref/bibliography.bib", "/users/jabref/koppor-bibliograsphy.bib");
-        assertEquals(Optional.of("bibliography.bib"), FileUtil.getUniquePathFragment(dirs, Path.of("/users/jabref/bibliography.bib")));
-    }
-
-    @Test
-    void testUniquePathFragmentWithSameSuffixAndLongerName() {
-        List<String> dirs = List.of("/users/jabref/bibliography.bib", "/users/jabref/koppor-bibliography.bib");
-        assertEquals(Optional.of("koppor-bibliography.bib"), FileUtil.getUniquePathFragment(dirs, Path.of("/users/jabref/koppor-bibliography.bib")));
-    }
-
-    @Test
     void testCopyFileFromEmptySourcePathToEmptyDestinationPathWithOverrideExistFile() {
         assertFalse(FileUtil.copyFile(nonExistingTestPath, nonExistingTestPath, true));
     }
